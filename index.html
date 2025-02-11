@@ -35,7 +35,7 @@
       <div id="overallViewScreen" class="screen">
         <h2>전체보기</h2>
         <p>우리의 총 결혼비용은?<strong id="totalCost">0원</strong></p>
-        <h3>할 일 목록</h3>
+        <h3>우리의 일정</h3>
         <ul id="taskList">
           <!-- 추가된 할 일이 보여집니다 -->
         </ul>
@@ -54,6 +54,9 @@
       <div id="addTaskScreen" class="screen">
         <h2>추가하기</h2>
         <form id="addTaskForm" onsubmit="event.preventDefault(); addTask()">
+          <label for="taskDate">날짜 선택:</label>
+          <input type="data" id="taskeDate" required />
+
           <label for="taskDesc">할 일:</label>
           <input
             type="text"
@@ -82,6 +85,12 @@
           <button type="submit">추가하기</button>
         </form>
         <button onclick="goToScreen('modifyTasksScreen')">뒤로가기</button>
+      </div>
+
+      <!-- 6. 삭제 화면: 삭제할 항목 선택 -->
+      <div id="deleteTaskScreen" class="screen">
+        <h2>삭제할 일정 선택</h2>
+        <ul id="delete TaskList"></ul>
       </div>
     </div>
     <script src="main.js"></script>
