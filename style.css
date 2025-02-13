@@ -1,6 +1,12 @@
+/* 구글폰트적용 */
+* {
+  font-family: "Cute Font", serif;
+  font-weight: 550;
+  font-style: normal;
+}
+
 /* 기본 스타일 */
 body {
-  font-family: Arial, sans-serif; /* 기본 폰트 설정 */
   background: #ffe6f0; /* 배경을 옅은 분홍색으로 설정 */
   margin: 0; /* 기본 마진 제거 */
   padding: 20px; /* 내부 여백 설정 */
@@ -16,6 +22,10 @@ body {
 }
 
 h2 {
+  text-align: center; /* 제목 중앙 정렬 */
+}
+
+h3 {
   text-align: center; /* 제목 중앙 정렬 */
 }
 
