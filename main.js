@@ -23,13 +23,13 @@ function addTask() {
 
   // 할일 목록에 항목 추가
   const taskList = document.getElementById("taskList");
-  const li = document.getElementById("li");
-  li.textContent = `${date}-${desc} (${cost}원) -${assignee}`; // 항목 내용 표시
+  const li = document.createElement("li"); // li 요소 생성
+  li.textContent = `${date}-${desc} (${cost}원) - ${assignee}`; // 항목 내용 표시
   li.setAttribute("data-cost", cost); // 예상 금액을 data-cost 속성에 저장
   taskList.appendChild(li);
 
   // 총 결혼비용 업데이트
-  totalCost += parseInt(cost); // 예상 금액을 총 결혼비용에 더 함
+  totalCost += parseInt(cost); // 예상 금액을 총 결혼비용에 더함
   document.getElementById("totalCost").textContent = totalCost + "원"; // 총 결혼 비용 화면에 표시
 
   // 폼 리셋 후 수정 화면으로 이동
@@ -40,7 +40,7 @@ function addTask() {
 // 삭제 화면에 현재 할 일 목록을 불러와, 각 항목마다 삭제 버튼 생성
 function populateDeleteScreen() {
   const deleteTaskList = document.getElementById("deleteTaskList");
-  deleteTaskList.innerHTML = "";
+  deleteTaskList.innerHTML = ""; // 삭제 목록 초기화
   const taskList = document.getElementById("taskList");
   const tasks = taskList.children; // 할 일 목록 항목들 가져오기
 
@@ -57,6 +57,7 @@ function populateDeleteScreen() {
           ${index + 1}. ${task.textContent}
         </span>`; // 항목의 번호와 내용 표시
       const delBtn = document.createElement("button");
+      delBtn.textContent = "삭제"; // 버튼 텍스트 추가
       delBtn.addEventListener("click", () => {
         const taskCost = parseInt(task.getAttribute("data-cost") || "0"); // 항목 예상 금액 가져오기
         totalCost -= taskCost; // 총 결혼비용에서 해당 금액 빼기

@@ -9,14 +9,14 @@
   <body>
     <div class="container">
       <!-- 1. 메인 화면 -->
-      <div id="main Screen" class="sreen active">
+      <div id="mainScreen" class="screen active">
         <!-- 메인 이미지 삽입 -->
         <img src="main.png" alt="main image" />
 
         <h2>결혼준비 투두리스트</h2>
 
         <!-- 결혼준비 메뉴 항목 -->
-        <div class="menu=item" onclick="goToScreen('ourTasksScreen')">
+        <div class="menu-item" onclick="goToScreen('ourTasksScreen')">
           1. 우리의 결혼준비
         </div>
         <div class="menu-item" onclick="alert('준비중입니다.')">
@@ -64,7 +64,7 @@
         <!-- 할 일을 추가합니다. -->
         <form id="addTaskForm" onsubmit="event.preventDefault(); addTask()">
           <label for="taskDate">날짜 선택:</label>
-          <input type="data" id="taskeDate" required />
+          <input type="date" id="taskDate" required />
 
           <label for="taskDesc">할 일:</label>
           <input
@@ -74,12 +74,11 @@
             required
           />
 
-          <label for="taksCost">예상금액:</label>
+          <label for="taskCost">예상금액:</label>
           <input
             type="number"
             id="taskCost"
-            placeholder="예상 금액을
-          입력하세요"
+            placeholder="예상 금액을 입력하세요"
             required
           />
 
@@ -100,7 +99,7 @@
       <!-- 6. 삭제 화면: 삭제할 항목 선택 -->
       <div id="deleteTaskScreen" class="screen">
         <h2>삭제할 일정 선택</h2>
-        <ul id="delete TaskList">
+        <ul id="deleteTaskList">
           <!-- 삭제할 항목 목록이 동적으로 생성 -->
         </ul>
         <!-- 뒤로가기 버튼 클릭 시, '수정하기' 화면으로 이동합니다. -->
