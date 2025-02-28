@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>두 손</title>
+
+    <!-- =====================================================
+        📌 해당 파일은 총 6가지 화면으로 구성되어 있습니다.
+    ====================================================== -->
+    <!--  
+        1️⃣ 메인 화면         : mainScreen  
+        2️⃣ 우리의 결혼 준비  : ourTasksScreen  
+        3️⃣ 전체보기         : overallViewScreen  
+        4️⃣ 수정하기         : modifyTasksScreen  
+        5️⃣ 추가하기         : addTaskScreen  
+        6️⃣ 삭제 화면       : deleteTaskScreen  
+    -->
+
+    <!-- 🌟 구글 폰트 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 🎨 스타일 적용 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- ===================================================== -->
+      <!-- 1️⃣ 메인 화면 (mainScreen) -->
+      <!-- ===================================================== -->
+      <div id="mainScreen" class="screen active">
+        <!-- 🖼️ 메인 이미지 -->
+        <img src="duson.png" alt="main image" />
+
+        <h1>DU SON</h1>
+        <h3>결혼을 향해 두 손을 맞잡고 걸어 가는 길</h3>
+        <h3>두손에서 도와드릴게요</h3>
+
+        <!-- 📌 메인 메뉴 -->
+        <div class="menu-item" onclick="goToScreen('ourTasksScreen')">
+          1. 우리의 결혼준비
+        </div>
+        <div class="menu-item" onclick="alert('준비중입니다.')">
+          2. 다른 이들의 결혼준비
+        </div>
+        <div class="menu-item" onclick="alert('준비중입니다.')">
+          3. 결혼준비정보
+        </div>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- 2️⃣ 우리의 결혼 준비 화면 (ourTasksScreen) -->
+      <!-- ===================================================== -->
+      <div id="ourTasksScreen" class="screen">
+        <h2>우리의 결혼준비</h2>
+        <button onclick="goToScreen('overallViewScreen')">1. 전체보기</button>
+        <button onclick="goToScreen('modifyTasksScreen')">2. 수정하기</button>
+        <button onclick="goToScreen('mainScreen')">뒤로가기</button>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- 3️⃣ 전체보기 화면 (overallViewScreen) -->
+      <!-- ===================================================== -->
+      <div id="overallViewScreen" class="screen">
+        <h2>전체보기</h2>
+        <p>
+          지금까지의 우리의 총 결혼비용은? 총
+          <strong id="totalCost">0원</strong>
+        </p>
+        <h3>우리의 일정</h3>
+        <ul id="taskList">
+          <!-- 📝 추가된 할 일 목록 -->
+        </ul>
+        <button onclick="goToScreen('ourTasksScreen')">뒤로가기</button>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- 4️⃣ 수정하기 화면 (modifyTasksScreen) -->
+      <!-- ===================================================== -->
+      <div id="modifyTasksScreen" class="screen">
+        <h2>수정하기</h2>
+        <button onclick="goToScreen('addTaskScreen')">1. 추가하기</button>
+        <button onclick="populateDeleteScreen()">2. 삭제</button>
+        <button onclick="goToScreen('ourTasksScreen')">뒤로가기</button>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- 5️⃣ 추가하기 화면 (addTaskScreen) -->
+      <!-- ===================================================== -->
+      <div id="addTaskScreen" class="screen">
+        <h2>추가하기</h2>
+        <form id="addTaskForm" onsubmit="event.preventDefault(); addTask()">
+          <label for="taskDate">📅 날짜 선택:</label>
+          <input type="date" id="taskDate" required />
+
+          <label for="taskDesc">📝 할 일:</label>
+          <input
+            type="text"
+            id="taskDesc"
+            placeholder="할 일을 입력하세요"
+            required
+          />
+
+          <label for="taskCost">💰 예상금액:</label>
+          <input
+            type="number"
+            id="taskCost"
+            placeholder="예상 금액을 입력하세요"
+            required
+          />
+
+          <label for="taskAssignee">👤 담당자:</label>
+          <select id="taskAssignee" required>
+            <option value="">선택하세요</option>
+            <option value="예신이">예신이</option>
+            <option value="예랑이">예랑이</option>
+            <option value="함께하기">함께하기</option>
+          </select>
+
+          <button type="submit">✅ 추가하기</button>
+        </form>
+        <button onclick="goToScreen('modifyTasksScreen')">뒤로가기</button>
+      </div>
+
+      <!-- ===================================================== -->
+      <!-- 6️⃣ 삭제 화면 (deleteTaskScreen) -->
+      <!-- ===================================================== -->
+      <div id="deleteTaskScreen" class="screen">
+        <h2>삭제할 일정 선택</h2>
+        <ul id="deleteTaskList">
+          <!-- 🗑️ 삭제할 할 일 목록 -->
+        </ul>
+        <button onclick="goToScreen('modifyTasksScreen')">뒤로가기</button>
+      </div>
+    </div>
+
+    <!-- 📜 JavaScript 파일 연결 -->
+    <script src="main.js"></script>
+  </body>
+</html>
